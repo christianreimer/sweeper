@@ -1,7 +1,7 @@
 .PHONY: test clean install
 
 test:
-	pytest --cov-report term-missing --cov=sweeper --verbose tests/*
+	pytest --cov-report term-missing --cov=sweeper	 --verbose tests/*
 
 clean:
 	@echo "Removing cache directories"
@@ -13,4 +13,5 @@ clean:
 	@find . -name *egg-info -type d -exec rm -rf {} +
 
 install:
+	pip install -r requirements.txt
 	pip install -r requirements_test.txt
