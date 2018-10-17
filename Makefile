@@ -1,7 +1,7 @@
 .PHONY: test clean install
 
 test:
-	pytest --cov-report term-missing --cov=sweeper.py --verbose tests/*
+	pytest --cov-report term-missing --cov=sweeper --verbose tests/*
 
 clean:
 	@echo "Removing cache directories"
