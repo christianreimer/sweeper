@@ -1,5 +1,17 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python
 
+"""
+A simple terminal version of Mine Sweeper.
+
+Usage: sweeper.py [--size=<s>] [--bombs=<b>]
+
+Options:
+  --size=<s>   Size of the board [default: 8]
+  --bombs=<b>  Number of bombs on board [default: 12]
+  --help       This message
+"""
+
+import docopt
 import random
 import string
 import sys
@@ -202,8 +214,17 @@ class Player:
 
 
 def main():
+    args = docopt.docopt(__doc__)
+
+    size = int(args['--size'])
+    bombs = int(args['--bombs'])
+
+    # Cannot have more bombs than there are cells on the board
+    if size * size < bombs:
+        bombs = size * size
+
     p = Player()
-    g = Game(8, 16, p)
+    g = Game(size, bombs, p)
     g.play()
 
 
