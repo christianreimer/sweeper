@@ -136,4 +136,3 @@ def test_show_mask_3():
     mask = str(board)
     assert mask == "  A B\n1 %s %s\n2 %s %s" % (
         Board.BLANK, Board.BLANK, Board.BLANK, Board.BLANK)
-

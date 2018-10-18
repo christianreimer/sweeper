@@ -24,9 +24,6 @@ class Game:
         self._set_player_hooks()
         self.continue_game = True
 
-    def __bool__(self):
-        return self.continue_game
-
     def _set_player_hooks(self):
         """
         Connect the hooks so the play can exit the game (and cheat!)
@@ -198,6 +195,7 @@ class Player:
 
             if value.lower() == 'q':
                 self.goodbye()
+                return
 
             if value.lower() == 'cheat':
                 print(self.cheat())
@@ -214,19 +212,19 @@ class Player:
 
 
 def main():
-    args = docopt.docopt(__doc__)
+    args = docopt.docopt(__doc__)  # pragma: nocover
 
-    size = int(args['--size'])
-    bombs = int(args['--bombs'])
+    size = int(args['--size'])     # pragma: nocover
+    bombs = int(args['--bombs'])   # pragma: nocover
 
     # Cannot have more bombs than there are cells on the board
-    if size * size < bombs:
-        bombs = size * size
+    if size * size < bombs:        # pragma: nocover
+        bombs = size * size        # pragma: nocover
 
-    p = Player()
-    g = Game(size, bombs, p)
-    g.play()
+    p = Player()                   # pragma: nocover
+    g = Game(size, bombs, p)       # pragma: nocover
+    g.play()                       # pragma: nocover
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == '__main__':  # pragma: nocover
+    main()                  # pragma: nocover
