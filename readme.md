@@ -4,7 +4,7 @@
 
 Simple terminal version of the Mine Sweeper game.
 
-```bash
+```
 $ ./sweeper.py --help
 
 A simple terminal version of Mine Sweeper.

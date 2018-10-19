@@ -1,4 +1,5 @@
 from sweeper import Board
+import string
 
 
 def test_neighbors_special_case_1():
@@ -136,3 +137,18 @@ def test_show_mask_3():
     mask = str(board)
     assert mask == "  A B\n1 %s %s\n2 %s %s" % (
         Board.BLANK, Board.BLANK, Board.BLANK, Board.BLANK)
+
+
+def test_valid_params_1():
+    board = Board(2, 2, None)
+    assert board.num_bombs == 2
+
+
+def test_valid_params_2():
+    board = Board(2, 5, None)
+    assert board.num_bombs == 2 * 2
+
+
+def test_valid_params_3():
+    board = Board(100, 5, None)
+    assert board.size == len(string.ascii_uppercase)

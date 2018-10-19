@@ -75,6 +75,7 @@ class Board:
     BLANK = '#'
 
     def __init__(self, size, num_bombs, game_over_f):
+        size, num_bombs = Board._adjust_parameters(size, num_bombs)
         self.size = size
         self.num_bombs = num_bombs
         self.mask = [[Board.BLANK] * size for _ in range(size)]
@@ -94,6 +95,18 @@ class Board:
 
     def __len__(self):
         return self.size
+
+    @staticmethod
+    def _adjust_parameters(size, num_bombs):
+        """
+        Ensure the board is not too large, and that there are not
+        more bombs than cells.
+        """
+        if size > len(string.ascii_uppercase):
+            size = len(string.ascii_uppercase)
+        if size * size < num_bombs:
+            num_bombs = size * size
+        return size, num_bombs
 
     def reveal_board(self):
         """
@@ -211,20 +224,16 @@ class Player:
                 pass
 
 
-def main():
-    args = docopt.docopt(__doc__)  # pragma: nocover
+def main():  # pragma: nocover
+    args = docopt.docopt(__doc__)
 
-    size = int(args['--size'])     # pragma: nocover
-    bombs = int(args['--bombs'])   # pragma: nocover
+    size = int(args['--size'])
+    bombs = int(args['--bombs'])
 
-    # Cannot have more bombs than there are cells on the board
-    if size * size < bombs:        # pragma: nocover
-        bombs = size * size        # pragma: nocover
-
-    p = Player()                   # pragma: nocover
-    g = Game(size, bombs, p)       # pragma: nocover
-    g.play()                       # pragma: nocover
+    p = Player()
+    g = Game(size, bombs, p)
+    g.play()
 
 
 if __name__ == '__main__':  # pragma: nocover
-    main()                  # pragma: nocover
+    main()
