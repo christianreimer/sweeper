@@ -27,7 +27,8 @@ def test_neighbors_special_case_4():
 
 def test_neighbors_normal_case():
     suggested = set(Board._get_neighbors(1, 1, 3))
-    known = set(((0, 0), (0, 1), (0, 2), (1, 0), (1, 2), (2, 0), (2, 1), (2, 2)))
+    known = set(((0, 0), (0, 1), (0, 2), (1, 0), (1, 2),
+                (2, 0), (2, 1), (2, 2)))
     assert suggested == known
 
 

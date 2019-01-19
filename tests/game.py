@@ -31,7 +31,6 @@ def test_game_3(monkeypatch, capsys):
     with pytest.raises(SystemExit):
         monkeypatch.setattr('sys.stdin', io.StringIO('q'))
         g.play()
-    
+
     captured = capsys.readouterr()
     assert 'Goodbye ...' in captured.out
-

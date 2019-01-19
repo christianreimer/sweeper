@@ -72,4 +72,3 @@ def test_player_7(monkeypatch):
     with pytest.raises(EOFError):
         p.get_move(b)
         assert callback_was_called
-
