@@ -17,3 +17,9 @@ Options:
   --help       This message
 ```
 
+### Example
+
+Short example game showing the interface, how to select a square, q handly cheat, and what happens when you step on a bomb. You will have to actually play to find out what happens when you clearn the board and thus win ...
+
+![Short Game](https://raw.githubusercontent.com/christianreimer/sweeper/artifacts/game.gif)
+
